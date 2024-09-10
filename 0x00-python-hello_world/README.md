@@ -5,7 +5,7 @@ Python - Hello, World
 General Objectives
 ------------------
 
-###To Know and understand:
+### To Know and understand:
 
 * Why Python programming is awesome
 * Who created Python
