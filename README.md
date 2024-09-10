@@ -29,22 +29,27 @@ Here is a list of some of the key projects included in this repository:
 ## How to Use
 
 1. Clone the repository:
-...
-   bash
+
+```bash
 git clone https://github.com/johnkenzzy/alx-higher_level_programming.git
-...
+
+```
+
 2. Navigaate to the project directory:
-...
-   bash
+
+```bash
 cd alx-higher_level_programming
-...
+
+```
+
 3. Check out the individual project directories and follow the instructions in the corresponding files
 
 4. Run Python script using:
-...
-   bash
+
+```bash
 python3 <filename.py>
-...
+
+```
 
 ### Author
 * Johnkennedy Umeh
