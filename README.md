@@ -3,7 +3,7 @@ ALX HIGHER LEVEL PROGRAMMING (PYTHON)
 
 Welcome to the **ALX Higher Level Programming** repository!
 
-	This repository contains solutions to various programming tasks and projects related to Python programming, as part of the **ALX Software Engineering** curriculum.
+This repository contains solutions to various programming tasks and projects related to Python programming, as part of the **ALX Software Engineering** curriculum.
 
 ## Projects
 
