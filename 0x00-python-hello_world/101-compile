@@ -1,2 +1,3 @@
 #!/bin/bash
-python3 -m py_compile "$PYFILE" ; compiled_file="${PYFILE}c"
+python3 -m py_compile "$PYFILE" && mv "__pycache__/${PYFILE%.py}".cpython-*.pyc "${PYFILE}c"
+
