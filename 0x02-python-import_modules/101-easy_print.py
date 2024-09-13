@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 import sys
-sys.stdout.write("#pythoniscool\n")
+if __name__ == "__main__":
+    sys.stdout.write("#pythoniscool\n")

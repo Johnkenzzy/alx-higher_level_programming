@@ -1,2 +1,4 @@
 #!/usr/bin/python3
-print("".join(map(chr, range(65, 91))))
+import string
+if __name__ == "__main__":
+    print(string.ascii_uppercase)
