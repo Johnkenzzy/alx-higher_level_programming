@@ -8,5 +8,5 @@ if __name__ == "__main__":
         print(f"1 argument:\n1: {argv[1]}")
     elif args > 1:
         print(f"{args} arguments:")
-        for i in range(1, args):
+        for i in range(1, args + 1):
             print(f"{i}: {argv[i]}")
