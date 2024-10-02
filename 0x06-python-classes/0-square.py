@@ -3,7 +3,6 @@
 """
 
 
-
 class Square:
     """Defines a geometric shape with 4 equal sides.
     """
