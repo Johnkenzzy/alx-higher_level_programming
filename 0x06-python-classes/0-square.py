@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 class Square:
-    """A class that does nothing.
+    """A class that defines a square.
 
-    The class is empty with no attribute
-    and methods defined in it
+    This class does not contain any attributes or methods yet.
 
     """
     pass
