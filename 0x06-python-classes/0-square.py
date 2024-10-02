@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""A module to provide square shapes
+"""
+
+
+
 class Square:
-    """A class that defines a square.
-
-    This class does not contain any attributes or methods yet.
-
+    """Defines a geometric shape with 4 equal sides.
     """
     pass
