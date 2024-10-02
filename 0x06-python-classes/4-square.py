@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module contains a class square (based on 2-square.py)
+"""This module contains a class square (based on 3-square.py)
 """
 
 
