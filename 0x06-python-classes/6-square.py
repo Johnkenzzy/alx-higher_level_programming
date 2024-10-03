@@ -75,6 +75,7 @@ class Square:
 
     def my_print(self):
         """Prints the # times the size of the square."""
+
         if self.__size == 0:
             print()
         else:
@@ -82,4 +83,4 @@ class Square:
                 if self.__position[0] == 0:
                     print('#' * self.__size)
                 else:
-                    print(' ' * self.__position[0], '#' * self.__size)
+                    print(' ' * (self.__position[0] - 1), '#' * self.__size)
