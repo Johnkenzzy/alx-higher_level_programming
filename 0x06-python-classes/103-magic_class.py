@@ -2,15 +2,18 @@
 """Magic clas module"""
 import math
 
+
 class MagicClass:
-    """A class to represent a circle and calculate its area and circumference."""
-    
+    """A class to represent a circle and
+    calculate its area and circumference.
+    """
+
     def __init__(self, radius=0):
         """Initializes the MagicClass with a given radius.
-        
+
         Args:
             radius (int or float): The radius of the circle. Defaults to 0.
-            
+
         Raises:
             TypeError: If the radius is not a number (int or float).
         """
@@ -21,7 +24,7 @@ class MagicClass:
 
     def area(self):
         """Calculates the area of the circle.
-        
+
         Returns:
             float: The area of the circle.
         """
@@ -29,9 +32,8 @@ class MagicClass:
 
     def circumference(self):
         """Calculates the circumference of the circle.
-        
+
         Returns:
             float: The circumference of the circle.
         """
         return 2 * math.pi * self.__radius
-
