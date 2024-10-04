@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""This module contains the definition of 2 classes Node and SinglyLinkedList."""
+"""This module contains definitions of Node and SinglyLinkedList classes."""
 
 
 class Node:
     """Defines a node of a singly linked list."""
-    
+
     def __init__(self, data, next_node=None):
         """Initializes the Node with data and next_node.
 
@@ -49,22 +49,23 @@ class SinglyLinkedList:
 
     def __str__(self):
         """Prints the entire list in stdout with one node's data per line."""
-        current = self.__head
+        curr = self.__head
         nodes = []
-        while current is not None:
-            nodes.append(str(current.data))
-            current = current.next_node
+        while curr is not None:
+            nodes.append(str(curr.data))
+            curr = curr.next_node
         return '\n'.join(nodes)
 
     def sorted_insert(self, value):
-        """Inserts a new Node into the list, keeping it sorted in increasing order."""
+        """Inserts a new Node into the list,
+        keeping it sorted in increasing order."""
         new_node = Node(value)
         if self.__head is None or self.__head.data >= value:
             new_node.next_node = self.__head
             self.__head = new_node
         else:
-            current = self.__head
-            while current.next_node is not None and current.next_node.data < value:
-                current = current.next_node
-            new_node.next_node = current.next_node
-            current.next_node = new_node
+            curr = self.__head
+            while curr.next_node is not None and curr.next_node.data < value:
+                curr = curr.next_node
+            new_node.next_node = curr.next_node
+            curr.next_node = new_node
