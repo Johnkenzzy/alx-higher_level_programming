@@ -1,0 +1,95 @@
+The ``3-say_my_name`` module
+=============================
+
+Using ``say_my_name()``
+-----------------------
+
+Import module
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+___
+Test Case 1: Valid first name and last name
+>>> say_my_name("Johnkennedy", "Umeh")
+My name is Johnkennedy Umeh
+
+___
+Test Case 2: Valid first name and empty last name
+>>> say_my_name("Johnkennedy")
+My name is Johnkennedy
+
+___
+Test Case 3: Valid first name and last name with spaces
+>>> say_my_name("Mary", "Jane")
+My name is Mary Jane
+
+___
+Test Case 4: Valid first name and single character last name
+>>> say_my_name("Bob", "A")
+My name is Bob A
+
+___
+Test Case 5: Valid first name and last name with special characters
+>>> say_my_name("O'Jay", "Ken")
+My name is O'Jay Ken
+
+___
+Test Case 6: Valid first name with spaces and valid last name
+>>> say_my_name("John Kennedy", "Umeh")
+My name is John Kennedy Umeh
+
+___
+Test Case 7: Numeric first name
+>>> say_my_name(123, "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+___
+Test Case 8: Numeric last name
+>>> say_my_name("John", 456)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+___
+Test Case 9: None as first name
+>>> say_my_name(None, "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+___
+Test Case 10: None as last name
+>>> say_my_name("John", None)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+___
+Test Case 11: Boolean as first name
+>>> say_my_name(True, "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+___
+Test Case 12: Boolean as last name
+>>> say_my_name("John", False)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+___
+Test Case 13: Special character as first name
+>>> say_my_name("!@#", "Smith")
+My name is !@# Smith
+
+___
+Test Case 14: Special character as last name
+>>> say_my_name("John", "$%^&")
+My name is John $%^&
+
+___
+Test Case 15: Large string as first name
+>>> say_my_name("A" * 100, "Smith")
+My name is AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Smith
