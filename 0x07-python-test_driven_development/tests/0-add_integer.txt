@@ -1,0 +1,118 @@
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer()``
+---------------------
+
+0-add_integer text file reStructuredText format.
+
+Import module
+>>> add_integer = __import__("0-add_integer").add_integer
+
+___
+Test Case 1: Adding two integers
+>>> add_integer(10, 20)
+30
+
+___
+Test Case 2: Adding an integer and a float
+>>> add_integer(10, 20.5)
+30
+
+___
+Test Case 3: Adding two floats (cast to integers)
+>>> add_integer(10.5, 20.8)
+30
+
+___
+Test Case 4: Adding without specifying the second argument (default value 98)
+>>> add_integer(5)
+103
+
+___
+Test Case 5: Adding a float and no second argument (default value 98)
+>>> add_integer(5.9)
+103
+
+___
+Test Case 6: Adding negative integers
+>>> add_integer(-10, -20)
+-30
+
+___
+Test Case 7: Adding negative and positive integers
+>>> add_integer(-10, 20)
+10
+
+___
+Test Case 8: Adding zero (edge case)
+>>> add_integer(0, 0)
+0
+
+___
+Test Case 9: Large integer addition
+>>> add_integer(123456789, 987654321)
+1111111110
+
+___
+Test Case 10: Adding very large float values (cast to integers)
+>>> add_integer(99999999.99, 0.9999)
+99999999
+
+___
+Test Case 11: Adding only one argument (defaults to 98)
+>>> add_integer(100)
+198
+
+___
+Test Case 12: Adding non-integer/float types (string instead of integer)
+>>> add_integer("100", 20)
+Traceback (most recent call last):
+	...
+TypeError: a must be an integer
+
+___
+Test Case 13: Adding non-integer/float types (list instead of integer)
+>>> add_integer([100], 20)
+Traceback (most recent call last):
+	...
+TypeError: a must be an integer
+
+___
+Test Case 14: Adding non-integer/float types (None as first argument)
+>>> add_integer(None, 20)
+Traceback (most recent call last):
+	...
+TypeError: a must be an integer
+
+___
+Test Case 15: Adding non-integer/float types (tuple as second argument)
+>>> add_integer(10, (20,))
+Traceback (most recent call last):
+	...
+TypeError: b must be an integer
+
+___
+Test Case 16: Edge case with very small floats
+>>> add_integer(1.000000001, 2.000000001)
+3
+
+___
+Test Case 17: Adding a float and the default second value
+>>> add_integer(5.2)
+103
+
+___
+Test Case 18: Adding negative float and negative integer
+>>> add_integer(-5.8, -2)
+-7
+
+___
+Test Case 19: Edge case where the float rounds down
+>>> add_integer(1.9, 1.9)
+2
+
+___
+Test Case 20: Adding a float close to an integer boundary
+>>> add_integer(2.999999, 2.999999)
+4
