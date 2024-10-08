@@ -1,0 +1,73 @@
+The ``4-print_square`` module
+==============================
+
+Using ``print_square()``
+-----------------------
+
+Import module
+>>> print_square = __import__("4-print_square").print_square
+
+___
+Test Case 1: Print a square of size 4
+>>> print_square(4)
+####
+####
+####
+####
+
+___
+Test Case 2: Print a square of size 10
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+___
+Test Case 3: Print a square of size 0
+>>> print_square(0)
+
+
+___
+Test Case 4: Print a square of size 1
+>>> print_square(1)
+#
+
+___
+Test Case 5: Size is negative
+>>> print_square(-1)
+Traceback (most recent call last):
+    ...
+ValueError: size must be >= 0
+
+___
+Test Case 6: Size is a float
+>>> print_square(4.5)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+___
+Test Case 7: Size is a string
+>>> print_square("4")
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+___
+Test Case 8: Size is a list
+>>> print_square([4])
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+___
+Test Case 9: Size is a boolean
+>>> print_square(True)
+#
