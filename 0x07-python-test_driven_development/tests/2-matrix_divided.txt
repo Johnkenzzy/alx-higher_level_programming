@@ -1,0 +1,99 @@
+From ``2-matrix_divided`` module
+================================
+
+Using ``matrix_divided()``
+---------------------
+
+Import module
+>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+___
+Test Case 1: Dividing a 2x2 matrix by a positive integer
+>>> matrix_divided([[4, 8], [10, 20]], 2)
+[[2.0, 4.0], [5.0, 10.0]]
+
+___
+Test Case 2: Dividing a 3x3 matrix by a positive integer
+>>> matrix_divided([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0], [2.33, 2.67, 3.0]]
+
+___
+Test Case 3: Dividing a 2x2 matrix by a float
+>>> matrix_divided([[5, 10], [15, 20]], 2.5)
+[[2.0, 4.0], [6.0, 8.0]]
+
+___
+Test Case 4: Dividing a matrix with negative numbers by a positive integer
+>>> matrix_divided([[4, -8], [-10, 20]], 2)
+[[2.0, -4.0], [-5.0, 10.0]]
+
+___
+Test Case 5: Dividing a matrix containing floats
+>>> matrix_divided([[1.5, 2.5], [3.5, 4.5]], 2)
+[[0.75, 1.25], [1.75, 2.25]]
+
+___
+Test Case 6: Dividing a matrix with a single row
+>>> matrix_divided([[4, 8]], 2)
+[[2.0, 4.0]]
+
+___
+Test Case 7: Dividing a 1x1 matrix by an integer
+>>> matrix_divided([[10]], 5)
+[[2.0]]
+
+___
+Test Case 8: Dividing a 2x2 matrix by 1
+>>> matrix_divided([[10, 20], [30, 40]], 1)
+[[10.0, 20.0], [30.0, 40.0]]
+
+___
+Test Case 9: Each row has different sizes
+>>> matrix_divided([[1, 2], [3]], 1)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
+
+___
+Test Case 10: Non-numeric element in matrix
+>>> matrix_divided([[1, 2], [3, "4"]], 1)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+___
+Test Case 11: Invalid divisor (not a number)
+>>> matrix_divided([[1, 2], [3, 4]], "2")
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+___
+Test Case 12: Division by zero
+>>> matrix_divided([[1, 2], [3, 4]], 0)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+___
+Test Case 13: Matrix with all zero elements divided by a number
+>>> matrix_divided([[0, 0], [0, 0]], 1)
+[[0.0, 0.0], [0.0, 0.0]]
+
+___
+Test Case 14: Dividing an empty matrix
+>>> matrix_divided([], 2)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+___
+Test Case 15: Dividing an empty matrix with an empty list
+>>> matrix_divided([[]], 2)
+[[]]
+
+___
+Test Case 16: Dividing a matrix with floats and a negative divisor
+>>> matrix_divided([[1.0, 2.0], [3.0, 4.0]], -2)
+[[-0.5, -1.0], [-1.5, -2.0]]
+
