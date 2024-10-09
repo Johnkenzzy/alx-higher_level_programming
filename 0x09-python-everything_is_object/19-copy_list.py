@@ -7,5 +7,5 @@ Supplies the copy_list function
 
 
 def copy_list(l):
-    """Returns the clone of a list"""
-    return (l[:])
+    """Returns the clone of a list."""
+    return (list(l[:]))
