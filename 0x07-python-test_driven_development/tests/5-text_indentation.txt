@@ -1,0 +1,106 @@
+The ``5-text_indentation`` module
+===============================
+
+Using ``text_indentation()``
+----------------------------
+
+Import module
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+___
+Test Case 1: Text with a period
+>>> text_indentation("Hello. How are you?")
+Hello.
+<BLANKLINE>
+How are you?
+
+___
+Test Case 2: Multiple sentences
+>>> text_indentation("This is the first sentence. This is the second?")
+This is the first sentence.
+<BLANKLINE>
+This is the second?
+
+___
+Test Case 3: Sentence ending with a colon
+>>> text_indentation("What do you think: Is it good?")
+What do you think:
+<BLANKLINE>
+Is it good?
+
+___
+Test Case 4: Text with multiple punctuation
+>>> text_indentation("Hello! What is this? It's great: let's see.")
+Hello! What is this?
+<BLANKLINE>
+It's great:
+<BLANKLINE>
+let's see.
+
+___
+Test Case 5: Text without any punctuation
+>>> text_indentation("This is a simple sentence without punctuation")
+This is a simple sentence without punctuation
+
+___
+Test Case 6: Empty string
+>>> text_indentation("")
+<BLANKLINE>
+
+___
+Test Case 7: String with only punctuation
+>>> text_indentation(".?")
+.
+<BLANKLINE>
+?
+
+___
+Test Case 8: Mixed content
+>>> text_indentation("Hello. What? Yes: No.")
+Hello.
+<BLANKLINE>
+What?
+<BLANKLINE>
+Yes:
+<BLANKLINE>
+No.
+
+___
+Test Case 9: String with leading and trailing spaces
+>>> text_indentation("   Hello.   How are you?   ")
+Hello.
+<BLANKLINE>
+How are you?
+
+___
+Test Case 10: String ending with punctuation
+>>> text_indentation("Is this correct?")
+Is this correct?
+
+___
+Test Case 11: Non-string input (integer)
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+___
+Test Case 12: Non-string input (list)
+>>> text_indentation(["This is a list"])
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+___
+Test Case 13: Non-string input (None)
+>>> text_indentation(None)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+___
+Test Case 14: Non-string input (boolean)
+>>> text_indentation(True)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
