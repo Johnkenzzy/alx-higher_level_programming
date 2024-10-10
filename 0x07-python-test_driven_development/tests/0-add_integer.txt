@@ -126,3 +126,8 @@ ___
 Test Case 22: Adding two expressions
 >>> add_integer(((10 * 50) / 3), (20 / 3))
 172
+
+___
+Test Case 22: Adding two expressions
+>>> add_integer(float('inf'), (20 / 3))
+
