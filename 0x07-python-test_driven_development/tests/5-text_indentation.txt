@@ -13,6 +13,7 @@ Test Case 1: Text with a period
 Hello.
 <BLANKLINE>
 How are you?
+<BLANKLINE>
 
 ___
 Test Case 2: Multiple sentences
@@ -20,6 +21,7 @@ Test Case 2: Multiple sentences
 This is the first sentence.
 <BLANKLINE>
 This is the second?
+<BLANKLINE>
 
 ___
 Test Case 3: Sentence ending with a colon
@@ -27,6 +29,7 @@ Test Case 3: Sentence ending with a colon
 What do you think:
 <BLANKLINE>
 Is it good?
+<BLANKLINE>
 
 ___
 Test Case 4: Text with multiple punctuation
@@ -36,6 +39,7 @@ Hello! What is this?
 It's great:
 <BLANKLINE>
 let's see.
+<BLANKLINE>
 
 ___
 Test Case 5: Text without any punctuation
@@ -45,7 +49,6 @@ This is a simple sentence without punctuation
 ___
 Test Case 6: Empty string
 >>> text_indentation("")
-<BLANKLINE>
 
 ___
 Test Case 7: String with only punctuation
@@ -53,6 +56,7 @@ Test Case 7: String with only punctuation
 .
 <BLANKLINE>
 ?
+<BLANKLINE>
 
 ___
 Test Case 8: Mixed content
@@ -64,6 +68,7 @@ What?
 Yes:
 <BLANKLINE>
 No.
+<BLANKLINE>
 
 ___
 Test Case 9: String with leading and trailing spaces
@@ -71,11 +76,13 @@ Test Case 9: String with leading and trailing spaces
 Hello.
 <BLANKLINE>
 How are you?
+<BLANKLINE>
 
 ___
 Test Case 10: String ending with punctuation
 >>> text_indentation("Is this correct?")
 Is this correct?
+<BLANKLINE>
 
 ___
 Test Case 11: Non-string input (integer)

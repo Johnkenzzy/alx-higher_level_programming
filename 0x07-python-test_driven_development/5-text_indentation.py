@@ -18,13 +18,11 @@ def text_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    text = text + "~"
     result = ""
     for char in text:
         result += char
         if char in {'.', '?', ':'}:
-            print(result.strip(), end="")
-            print("\n\n", end="")
+            print(result.strip() + "\n")
             result = ""
 
     if result.strip():
