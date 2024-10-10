@@ -15,7 +15,7 @@ My name is Johnkennedy Umeh
 ___
 Test Case 2: Valid first name and empty last name
 >>> say_my_name("Johnkennedy")
-My name is Johnkennedy
+My name is Johnkennedy 
 
 ___
 Test Case 3: Valid first name and last name with spaces
