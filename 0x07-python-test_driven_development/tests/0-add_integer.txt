@@ -116,3 +116,13 @@ ___
 Test Case 20: Adding a float close to an integer boundary
 >>> add_integer(2.999999, 2.999999)
 4
+
+___
+Test Case 21: Adding two intergers in parenthese
+>>> add_integer((10), (20))
+30
+
+___
+Test Case 22: Adding two expressions
+>>> add_integer(((10 * 50) / 3), (20 / 3))
+172
