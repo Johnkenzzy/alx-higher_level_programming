@@ -113,3 +113,17 @@ ___
 Test Case 17: Valid matrix with float values
 >>> matrix_mul([[1.5, 2.5], [3.5, 4.5]], [[5.0, 6.0], [7.0, 8.0]])
 [[25.0, 29.0], [49.0, 57.0]]
+
+___
+Test Case 18: Using string as argument
+>>> matrix_mul([[1, 2], [3, 4]], "Johnken")
+Traceback (most recent call last):
+  ...
+TypeError: m_b must be a list
+
+___
+Test Case 19: Missin one argument
+>>> matrix_mul([[1, 2], [3, 4]])
+Traceback (most recent call last):
+  ...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'

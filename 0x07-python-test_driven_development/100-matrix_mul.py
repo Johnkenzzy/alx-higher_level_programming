@@ -17,9 +17,9 @@ def matrix_mul(m_a, m_b):
         TypeError: If m_a or m_b is not a list or list of lists.
         ValueError: If m_a or m_b are empty or can't be multiplied.
     """
-    if type(m_a) is not list:
+    if m_a is None or type(m_a) is not list:
         raise TypeError("m_a must be a list")
-    if type(m_b) is not list:
+    if m_b is None or type(m_b) is not list:
         raise TypeError("m_b must be a list")
 
     for row in m_a:
