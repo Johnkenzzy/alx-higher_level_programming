@@ -1,0 +1,129 @@
+The 101-lazy_matrix_mul module
+======================
+
+Using lazy_matrix_mul(m_a, m_b)
+-----------------------
+
+Import module:
+>>> matrix_mul = __import__("101-lazy_matrix_mul").lazy_matrix_mul
+
+___
+Test Case 1: Valid matrices (2x3) * (3x2)
+>>> matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10], [11, 12]])
+[[58, 64], [139, 154]]
+
+___
+Test Case 2: Valid matrices (1x2) * (2x1)
+>>> matrix_mul([[5, 6]], [[7], [8]])
+[[83]]
+
+___
+Test Case 3: Valid matrices (2x2) * (2x2)
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+[[19, 22], [43, 50]]
+
+___
+Test Case 4: Non-list input for m_a
+>>> matrix_mul(123, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+  ...
+TypeError: m_a must be a list
+
+___
+Test Case 5: Non-list input for m_b
+>>> matrix_mul([[1, 2], [3, 4]], 123)
+Traceback (most recent call last):
+  ...
+TypeError: m_b must be a list
+
+___
+Test Case 6: Non-list of lists for m_a
+>>> matrix_mul([1, 2, 3], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+  ...
+TypeError: m_a must be a list of lists
+
+___
+Test Case 7: Non-list of lists for m_b
+>>> matrix_mul([[1, 2], [3, 4]], [5, 6])
+Traceback (most recent call last):
+  ...
+TypeError: m_b must be a list of lists
+
+___
+Test Case 8: Empty matrix m_a
+>>> matrix_mul([], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+  ...
+ValueError: m_a can't be empty
+
+___
+Test Case 9: Empty matrix m_b
+>>> matrix_mul([[1, 2], [3, 4]], [])
+Traceback (most recent call last):
+  ...
+ValueError: m_b can't be empty
+
+___
+Test Case 10: Non-integer/float element in m_a
+>>> matrix_mul([[1, "2"], [3, 4]], [[5, 6], [7, 8]])
+Traceback (most recent call last):
+  ...
+TypeError: m_a should contain only integers or floats
+
+___
+Test Case 11: Non-integer/float element in m_b
+>>> matrix_mul([[1, 2], [3, 4]], [[5, "6"], [7, 8]])
+Traceback (most recent call last):
+  ...
+TypeError: m_b should contain only integers or floats
+
+___
+Test Case 12: Rows of m_a not of the same size
+>>> matrix_mul([[1, 2], [3, 4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+  ...
+TypeError: each row of m_a must be of the same size
+
+___
+Test Case 13: Rows of m_b not of the same size
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4, 5]])
+Traceback (most recent call last):
+  ...
+TypeError: each row of m_b must be of the same size
+
+___
+Test Case 14: Incompatible matrix sizes for multiplication
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6]])
+Traceback (most recent call last):
+  ...
+ValueError: m_a and m_b can't be multiplied
+
+___
+Test Case 15: Single element matrix multiplication
+>>> matrix_mul([[2]], [[3]])
+[[6]]
+
+___
+Test Case 16: Valid matrix with large integers
+>>> matrix_mul([[2**30, 2**31], [2**32, 2**33]], [[2**34, 2**35], [2**36, 2**37]])
+[[0, 0], [0, 0]]
+
+___
+Test Case 17: Valid matrix with float values
+>>> matrix_mul([[1.5, 2.5], [3.5, 4.5]], [[5.0, 6.0], [7.0, 8.0]])
+[[25.0, 29.0], [49.0, 57.0]]
+
+___
+Test Case 18: Using string as argument
+>>> matrix_mul([[1, 2], [3, 4]], "Johnken")
+Traceback (most recent call last):
+  ...
+TypeError: m_b must be a list
+
+___
+Test Case 19: Missin one argument
+>>> matrix_mul([[1, 2], [3, 4]])
+Traceback (most recent call last):
+  ...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
