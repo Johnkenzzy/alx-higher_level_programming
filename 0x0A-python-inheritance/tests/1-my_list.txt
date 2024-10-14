@@ -67,3 +67,23 @@ Test Case 10: List with all negative integers
 >>> my_list = MyList([-10, -50, -30, -40])
 >>> my_list.print_sorted()
 [-50, -40, -30, -10]
+
+___
+Test Case 11: List with all floating numbers
+>>> my_list = MyList([10.12, 10.05, 10.36, 10.045])
+>>> my_list.print_sorted()
+[10.045, 10.05, 10.12, 10.36]
+
+___
+Test Case 12: List with integers and floats
+>>> my_list = MyList([10, 5.24, -30, 40.46])
+>>> my_list.print_sorted()
+[-30, 5.24, 10, 40.46]
+
+___
+Test Case 13: List with mixed types
+>>> my_list = MyList([2, "John", -30, "c"])
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+	...
+TypeError: '<' not supported between instances of 'str' and 'int'
