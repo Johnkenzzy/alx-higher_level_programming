@@ -7,7 +7,7 @@ Supplies is_same_class(obj, a_class)
 
 def is_same_class(obj, a_class):
     """Checks if an object is directly an instance of a class
-        
+
     Return (bool):
             True if it's an instance,else False
     """
