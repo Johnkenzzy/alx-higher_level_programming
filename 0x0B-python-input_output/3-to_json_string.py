@@ -6,5 +6,6 @@ json = __import__("json")
 
 
 def to_json_string(my_obj):
+    """Returns the JSON representation of an object (string)"""
     new_obj = json.dumps(my_obj)
     return (new_obj)
