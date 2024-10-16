@@ -2,7 +2,7 @@
 """Module 3-to_json_string
 Contains to_json_string(my_obj)
 """
-import json
+json = __import__("json")
 
 
 def to_json_string(my_obj):
