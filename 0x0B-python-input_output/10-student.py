@@ -18,5 +18,4 @@ class Student:
         if attrs is None:
             return (self.__dict__)
         else:
-            t = attrs
-            return ({t: self.__dict__[t] for t in t if t in self.__dict__})
+            return ({t: self.__dict__[t] for t in attrs if t in self.__dict__})
