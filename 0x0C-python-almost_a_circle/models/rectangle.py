@@ -6,13 +6,14 @@ This module defines the Rectangle class.
 
 The Rectangle class inherits from the Base class.
 """
-from models.base import Base
+from base import Base
 
 
 class Rectangle(Base):
-    """A 3-sided polygon formed by 3 straight line segments"""
+    """A 4-sided polygon with opposite sides that are equal in length"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        """Initialize the instance attributes"""
         self.width = width
         self.height = height
         self.x = x
@@ -96,7 +97,7 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """Assigns argument to each attributes"""
-        if not args and len(args) == 0:
+        if len(args) == 0:
             if "id" in kwargs:
                 self.id = kwargs["id"]
             if "width" in kwargs:
@@ -118,3 +119,13 @@ class Rectangle(Base):
                 self.x = args[3]
             if len(args) > 4:
                 self.y = args[4]
+
+    def to_dictionary(self):
+        """Returns a dictionary representation of a Rectangle"""
+        return {
+            'x': self.x,
+            'y': self.y,
+            'id': self.id,
+            'height': self.height,
+            'width': self.width
+        }

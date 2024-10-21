@@ -3,6 +3,8 @@
 """
 from models.base import Base
 from models.rectangle import Rectangle
+from io import StringIO
+from unittest.mock import patch
 unittest = __import__("unittest")
 
 
@@ -100,7 +102,6 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             r1 = Rectangle(-10, 5)
         self.assertEqual(str(context.exception), "width must be > 0")
-        
         with self.assertRaises(ValueError) as context:
             r1 = Rectangle(10, -5)
         self.assertEqual(str(context.exception), "height must be > 0")
@@ -110,7 +111,6 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             r1 = Rectangle(0, 5)
         self.assertEqual(str(context.exception), "width must be > 0")
-        
         with self.assertRaises(ValueError) as context:
             r1 = Rectangle(10, 0)
         self.assertEqual(str(context.exception), "height must be > 0")
@@ -120,22 +120,74 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(TypeError) as context:
             r1 = Rectangle(10.5, 5)
         self.assertEqual(str(context.exception), "width must be an integer")
-        
         with self.assertRaises(TypeError) as context:
             r1 = Rectangle(10, "5")
         self.assertEqual(str(context.exception), "height must be an integer")
 
-    def test_display(self):
+    def test_display_standard(self):
         """Test display method"""
-        import io
-        import sys
         r1 = Rectangle(4, 3)
         expected_output = "####\n####\n####\n"
-        captured_output = io.StringIO()
-        sys.stdout = captured_output
-        r1.display()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue(), expected_output)
+        with patch('sys.stdout', new=StringIO()) as captured_output:
+            r1.display()
+            self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_display_with_x_offset(self):
+        """Test display for a rectangle with x offset."""
+        r2 = Rectangle(3, 2, 2)
+        expected_output = "  ###\n  ###\n"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            r2.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
+
+    def test_display_with_y_offset(self):
+        """Test display for a rectangle with y offset."""
+        r3 = Rectangle(3, 2, 0, 2)
+        expected_output = "\n\n###\n###\n"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            r3.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
+
+    def test_display_with_x_and_y_offset(self):
+        """Test display for a rectangle with both x and y offset."""
+        r4 = Rectangle(3, 2, 2, 2)
+        expected_output = "\n\n  ###\n  ###\n"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            r4.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
+
+    def test_display_minimal_rectangle(self):
+        """Test display for a rectangle of width 1 and height 1."""
+        r5 = Rectangle(1, 1)
+        expected_output = "#\n"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            r5.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
+
+    def test_display_large_rectangle(self):
+        """Test display for a large rectangle."""
+        r6 = Rectangle(5, 3)
+        expected_output = "#####\n#####\n#####\n"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            r6.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
+
+    def test_display_negative_x_or_y(self):
+        """Test display with negative x or y, expecting a ValueError."""
+        with self.assertRaises(ValueError):
+            r7 = Rectangle(3, 2, -1, 0)
+            r7.display()
+        with self.assertRaises(ValueError):
+            r8 = Rectangle(3, 2, 0, -2)
+            r8.display()
+
+    def test_display_large_x_and_y_offset(self):
+        """Test display with very large x and y offsets."""
+        r11 = Rectangle(2, 2, 100, 100)
+        expected_output = ("\n" * 100) + (" " * 100 + "##\n") * 2
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            r11.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
 
     def test_str_method(self):
         """Test the __str__ method output"""
@@ -161,3 +213,79 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(r7.height, 12)
         self.assertEqual(r7.x, 2)
         self.assertEqual(r7.y, 4)
+
+    def test_update_with_args(self):
+        """Test updating with *args"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        self.rect.update(89, 2, 3, 4, 5)
+        self.assertEqual(self.rect.id, 89)
+        self.assertEqual(self.rect.width, 2)
+        self.assertEqual(self.rect.height, 3)
+        self.assertEqual(self.rect.x, 4)
+        self.assertEqual(self.rect.y, 5)
+
+    def test_update_with_partial_args(self):
+        """Test updating with partial *args"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        self.rect.update(99, 15)
+        self.assertEqual(self.rect.id, 99)
+        self.assertEqual(self.rect.width, 15)
+        self.assertEqual(self.rect.height, 20)
+        self.assertEqual(self.rect.x, 30)
+        self.assertEqual(self.rect.y, 40)
+
+    def test_update_with_kwargs(self):
+        """Test updating with **kwargs"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        self.rect.update(id=100, width=50, height=60, x=70, y=80)
+        self.assertEqual(self.rect.id, 100)
+        self.assertEqual(self.rect.width, 50)
+        self.assertEqual(self.rect.height, 60)
+        self.assertEqual(self.rect.x, 70)
+        self.assertEqual(self.rect.y, 80)
+
+    def test_update_with_partial_kwargs(self):
+        """Test updating with partial **kwargs"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        self.rect.update(width=40, y=70)
+        self.assertEqual(self.rect.id, 1)
+        self.assertEqual(self.rect.width, 40)
+        self.assertEqual(self.rect.height, 20)
+        self.assertEqual(self.rect.x, 30)
+        self.assertEqual(self.rect.y, 70)
+
+    def test_update_with_args_and_kwargs(self):
+        """Test that *args takes precedence over **kwargs"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        self.rect.update(77, 33, 44, 55, 66, id=99, width=100, height=200)
+        self.assertEqual(self.rect.id, 77)
+        self.assertEqual(self.rect.width, 33)
+        self.assertEqual(self.rect.height, 44)
+        self.assertEqual(self.rect.x, 55)
+        self.assertEqual(self.rect.y, 66)
+
+    def test_update_with_no_args_or_kwargs(self):
+        """Test no arguments passed to update method"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        self.rect.update()
+        self.assertEqual(self.rect.id, 1)
+        self.assertEqual(self.rect.width, 10)
+        self.assertEqual(self.rect.height, 20)
+        self.assertEqual(self.rect.x, 30)
+        self.assertEqual(self.rect.y, 40)
+
+    def test_update_invalid_args(self):
+        """Test invalid *args (less than required arguments)"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        with self.assertRaises(TypeError):
+            self.rect.update(1, 2, "height must be an integer")
+
+    def test_update_invalid_kwargs(self):
+        """Test invalid **kwargs (wrong data types)"""
+        self.rect = Rectangle(10, 20, 30, 40, 1)
+        with self.assertRaises(TypeError):
+            self.rect.update(width="invalid_width")
+        with self.assertRaises(TypeError):
+            self.rect.update(height="invalid_height")
+        with self.assertRaises(ValueError):
+            self.rect.update(width=-10)
