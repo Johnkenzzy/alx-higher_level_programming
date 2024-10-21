@@ -81,5 +81,40 @@ class Rectangle(Base):
 
     def display(self):
         """Prints Rectangle instance with character #"""
+        print('\n' * self.y, end="")
         for h in range(self.height):
+            if self.x > 0:
+                print(" " * (self.x - 1), "#" * self.width)
+            else:
                 print("#" * self.width)
+
+    def __str__(self):
+        """Returns a custom Rectangle classs string"""
+        x, y = self.x, self.y
+        width, height = self.width, self.height
+        return (f"[Rectangle] ({self.id}) {x}/{y} - {width}/{height}")
+
+    def update(self, *args, **kwargs):
+        """Assigns argument to each attributes"""
+        if not args and len(args) == 0:
+            if "id" in kwargs:
+                self.id = kwargs["id"]
+            if "width" in kwargs:
+                self.width = kwargs["width"]
+            if "height" in kwargs:
+                self.height = kwargs["height"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
+        else:
+            if len(args) > 0:
+                self.id = args[0]
+            if len(args) > 1:
+                self.width = args[1]
+            if len(args) > 2:
+                self.height = args[2]
+            if len(args) > 3:
+                self.x = args[3]
+            if len(args) > 4:
+                self.y = args[4]
