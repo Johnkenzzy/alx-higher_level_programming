@@ -3,9 +3,9 @@
 """
 from models.base import Base
 from models.rectangle import Rectangle
+from io import StringIO
 from unittest.mock import patch
 unittest = __import__("unittest")
-StringIO = __import__("io").StringIO
 
 
 class TestRectangleClass(unittest.TestCase):

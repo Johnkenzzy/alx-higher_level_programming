@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Unittest for module base
-Checks for diferrent test cases
 """
 from models.base import Base
 unittest = __import__("unittest")
