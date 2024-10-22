@@ -43,7 +43,7 @@ class Base:
     def from_json_string(json_string):
         """Returns the list of the JSON string representation"""
         if json_string is None or len(json_string) == 0:
-            return ("[]")
+            return ([])
         return (json.loads(json_string))
 
     @staticmethod
@@ -51,7 +51,7 @@ class Base:
         """Creates an instance with attributes already set from a dictionary"""
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
-        if cls.__name__ == "Square":
+        elif cls.__name__ == "Square":
             dummy = cls(1)
         dummy.update(**dictionary)
         return (dummy)
