@@ -8,6 +8,8 @@ The Base class will be the parent class for subsequent child classes
 in this project.
 """
 json = __import__("json")
+csv = __import__("csv")
+os = __import__("os")
 
 
 class Base:
@@ -65,7 +67,50 @@ class Base:
             with open(filename, 'r', encoding="utf-8") as f:
                 json_string = f.read()
         except FileNotFoundError:
-            return []
+            return ([])
 
         list_dictionaries = cls.from_json_string(json_string)
-        return [cls.create(**dictionary) for dictionary in list_dictionaries]
+        return ([cls.create(**dictionary) for dictionary in list_dictionaries])
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes and saves a list of objects to a CSV file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode='w', newline='', encoding='utf-8') as csvfile:
+            wrt = csv.writer(csvfile)
+            if cls.__name__ == "Rectangle":
+                for obj in list_objs:
+                    wrt.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+            elif cls.__name__ == "Square":
+                for obj in list_objs:
+                    wrt.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes and loads a list of objects from a CSV file"""
+        filename = cls.__name__ + ".csv"
+        if not os.path.exists(filename):
+            return ([])
+
+        with open(filename, mode='r', newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+            instances = []
+            if cls.__name__ == "Rectangle":
+                for row in reader:
+                    id_value = int(row[0])
+                    width = int(row[1])
+                    height = int(row[2])
+                    x = int(row[3])
+                    y = int(row[4])
+                    instance = cls(width, height, x, y, id_value)
+                    instances.append(instance)
+            elif cls.__name__ == "Square":
+                for row in reader:
+                    id_value = int(row[0])
+                    size = int(row[1])
+                    x = int(row[2])
+                    y = int(row[3])
+                    instance = cls(size, x, y)
+                    instances.append(instance)
+
+        return (instances)
