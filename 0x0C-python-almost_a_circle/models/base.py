@@ -46,7 +46,7 @@ class Base:
             return ([])
         return (json.loads(json_string))
 
-    @staticmethod
+    @classmethod
     def create(cls, **dictionary):
         """Creates an instance with attributes already set from a dictionary"""
         if cls.__name__ == "Rectangle":
@@ -55,3 +55,17 @@ class Base:
             dummy = cls(1)
         dummy.update(**dictionary)
         return (dummy)
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances from a file containing JSON string."""
+        filename = cls.__name__ + ".json"
+
+        try:
+            with open(filename, 'r', encoding="utf-8") as f:
+                json_string = f.read()
+        except FileNotFoundError:
+            return []
+
+        list_dictionaries = cls.from_json_string(json_string)
+        return [cls.create(**dictionary) for dictionary in list_dictionaries]
