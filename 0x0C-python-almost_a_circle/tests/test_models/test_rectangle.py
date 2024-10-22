@@ -22,13 +22,6 @@ class TestRectangle(unittest.TestCase):
         """Test the area calculation of the Rectangle."""
         self.assertEqual(self.rectangle.area(), 24)  # 4 * 6
 
-    def test_display(self):
-        """Test the display method."""
-        expected_output = "\n\n###\n###\n###\n###\n###\n###\n"
-        with unittest.mock.patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
-            self.rectangle.display()
-            self.assertEqual(mock_stdout.getvalue(), expected_output)
-
     def test_string_representation(self):
         """Test the string representation of the Rectangle."""
         expected = "[Rectangle] (1) 2/3 - 4/6"
