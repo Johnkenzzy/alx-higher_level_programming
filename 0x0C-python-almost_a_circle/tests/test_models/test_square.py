@@ -78,3 +78,26 @@ class TestSquare(unittest.TestCase):
     def tearDown(self):
         """Clean up after tests"""
         del self.square
+
+    def test_update_with_partial_args(self):
+        """Test update method with partial positional arguments"""
+        self.square.update(42, 7)
+        self.assertEqual(self.square.id, 42)
+        self.assertEqual(self.square.size, 7)
+        self.assertEqual(self.square.x, 2)
+        self.assertEqual(self.square.y, 3)
+
+    def test_update_with_partial_kwargs(self):
+        """Test update method with partial keyword arguments"""
+        self.square.update(size=15)
+        self.assertEqual(self.square.size, 15)
+        self.assertEqual(self.square.id, 1)
+        self.assertEqual(self.square.x, 2)
+        self.assertEqual(self.square.y, 3)
+
+    def test_invalid_x_y_values(self):
+        """Test setting invalid x and y values"""
+        with self.assertRaises(ValueError):
+            self.square.x = -1
+        with self.assertRaises(ValueError):
+            self.square.y = -2
