@@ -10,7 +10,7 @@ in this project.
 json = __import__("json")
 csv = __import__("csv")
 os = __import__("os")
-turtle = __import__("turtle")
+
 
 class Base:
     """Manages id attributes in classes derived from Base class"""
@@ -113,40 +113,3 @@ class Base:
                     instance = cls(size, x, y)
                     instances.append(instance)
         return (instances)
-
-    @staticmethod
-    def draw(list_rectangles, list_squares):
-        """Draws all Rectangles and Squares using Turtle graphics."""
-        screen = turtle.Screen()
-        screen.title("Draw Rectangles and Squares")
-        screen.bgcolor("white")
-
-        pen = turtle.Turtle()
-        pen.speed(1)
-
-        for rect in list_rectangles:
-            pen.penup()
-            pen.goto(rect.x, rect.y)
-            pen.pendown()
-            pen.fillcolor("blue")
-            pen.begin_fill()
-            for _ in range(2):
-                pen.forward(rect.width)
-                pen.right(90)
-                pen.forward(rect.height)
-                pen.right(90)
-            pen.end_fill()
-
-        for square in list_squares:
-            pen.penup()
-            pen.goto(square.x, square.y)
-            pen.pendown()
-            pen.fillcolor("green")
-            pen.begin_fill()
-            for _ in range(4):
-                pen.forward(square.size)
-                pen.right(90)
-            pen.end_fill()
-
-        pen.hideturtle()
-        screen.mainloop()
