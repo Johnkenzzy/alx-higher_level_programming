@@ -4,7 +4,7 @@ SQL - Introduction
 General Objectives of Study:
 ---------------------------
 
-* 200~What’s a database
+* What’s a database
 * What’s a relational database
 * What does SQL stand for
 * What’s MySQL
