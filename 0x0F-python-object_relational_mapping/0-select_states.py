@@ -11,7 +11,7 @@ conn = MySQLdb.connect(
         passwd=arg_list[1], db=arg_list[2], charset="utf8"
         )
 cur = conn.cursor()
-cur.execute("SELECT * FROM states")
+cur.execute("SELECT * FROM states ORDER BY id ASC")
 rows = cur.fetchall()
 for row in rows:
     print(row)
