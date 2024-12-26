@@ -3,8 +3,9 @@
 Lists all states with a name starting with N (upper N)
 from the database hbtn_0e_0_usa
 """
-import MySQLdb
 import sys
+import MySQLdb
+
 
 if __name__ == "__main__":
     arg_list = sys.argv[1:]
@@ -14,8 +15,9 @@ if __name__ == "__main__":
         )
     cur = conn.cursor()
     cur.execute(
-            "SELECT * FROM states WHERE states.name LIKE 'N%' ORDER BY id ASC"
-            )
+        "SELECT * FROM states WHERE states.name LIKE %s ORDER BY id ASC",
+        ('N%',)
+        )
     rows = cur.fetchall()
     for row in rows:
         print(row)
