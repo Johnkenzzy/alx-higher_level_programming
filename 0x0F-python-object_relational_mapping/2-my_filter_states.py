@@ -15,7 +15,7 @@ if __name__ == "__main__":
     cur = conn.cursor()
     cur.execute(
         "SELECT * FROM states\
-        WHERE name=%s\
+        WHERE BINARY name=%s\
         ORDER BY id ASC",
         ("{}".format(arg_list[3]),)
         )
@@ -23,4 +23,4 @@ if __name__ == "__main__":
     for row in rows:
         print(row)
     cur.close()
-    conn.close()
+    onn.close()
