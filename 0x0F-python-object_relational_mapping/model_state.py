@@ -16,3 +16,6 @@ class State(Base):
             nullable=False, primary_key=True
             )
     name = Column(String(128), nullable=False)
+
+if __name__ == '__main__':
+    State()
