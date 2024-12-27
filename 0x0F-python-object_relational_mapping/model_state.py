@@ -21,12 +21,12 @@ class State(Base):
     ----------
     __tablename__ : str
         The name of the table in the database associated with this class.
-    
+
     id : int
         Unique identifier for each state. It is auto-incremented primary key.
         - Column type: Integer
         - Constraints: Unique, Non-nullable, Primary key
-        
+
     name : str
         The name of the state.
         - Column type: String (max length: 128 characters)
