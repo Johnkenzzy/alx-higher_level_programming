@@ -10,12 +10,31 @@ Base = declarative_base()
 
 
 class State(Base):
+    """
+    State Class
+
+    This class represents the 'states' table in the database and maps its
+    columns to the class attributes using SQLAlchemy's
+    Object-Relational Mapping (ORM).
+
+    Attributes:
+    ----------
+    __tablename__ : str
+        The name of the table in the database associated with this class.
+    
+    id : int
+        Unique identifier for each state. It is auto-incremented primary key.
+        - Column type: Integer
+        - Constraints: Unique, Non-nullable, Primary key
+        
+    name : str
+        The name of the state.
+        - Column type: String (max length: 128 characters)
+        - Constraints: Non-nullable
+    """
     __tablename__ = 'states'
     id = Column(
             Integer, autoincrement=True, unique=True,
             nullable=False, primary_key=True
             )
     name = Column(String(128), nullable=False)
-
-if __name__ == '__main__':
-    State()
