@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all State objects that contain the letter `a`
+Prints the first State object that is taken as argument 
 from the database hbtn_0e_6_usa
 """
 import sys
