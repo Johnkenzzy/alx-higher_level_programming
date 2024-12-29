@@ -16,7 +16,9 @@ class City(Base):
         state_id (int): The ID of the state to which the city belongs.
     """
     __tablename__ = 'cities'
-    id = Column(Integer, unique=True, autoincrement=True,
-            nullable=False, primary_key=True)
+    id = Column(
+            Integer, unique=True, autoincrement=True,
+            nullable=False, primary_key=True
+            )
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
