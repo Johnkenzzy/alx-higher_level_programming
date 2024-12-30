@@ -5,7 +5,7 @@ contained in the database hbtn_0e_101_usa
 """
 import sys
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, joinedload
 from relationship_state import State
 from relationship_city import City
 
@@ -15,12 +15,9 @@ if __name__ == "__main__":
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states_x_cities = session.query(State, City).filter(
-            State.id == City.state_id).order_by(
-                    State.id, City.id).all()
-    curr_state_id = None
-    for state, city in states_x_cities:
-        if state.id != curr_state_id:
-            print(f"{state.id}: {state.name}")
-            curr_state_id = state.id
-        print(f"\t{city.id}: {city.name}")
+    states_x_cities = session.query(State).options(joinedload(
+        State.cities)).all()
+    for state in states_x_cities:
+        print(f"{state.id}: {state.name}")
+        for city in state.cities:
+            print(f"\t{city.id}: {city.name}")
