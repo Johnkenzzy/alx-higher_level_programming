@@ -18,6 +18,6 @@ if __name__ == "__main__":
     states_x_cities = session.query(State).outerjoin(City).order_by(State.id, City.id).all()
     for state in states_x_cities:
         print(f"{state.id}: {state.name}")
-        for city in sorted(state.cities, key=lambda c: c.id):
+        for city in state.cities:
             print(f"\t{city.id}: {city.name}")
     session.close()
