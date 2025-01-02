@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Prints the first State object that is taken as argument 
+Prints the first State object that is taken as argument
 from the database hbtn_0e_6_usa
 """
 import sys
