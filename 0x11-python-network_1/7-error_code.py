@@ -11,7 +11,7 @@ if __name__ == "__main__":
     url = sys.argv[1]
 
     resp = requests.get(url)
-    print(f'{resp.headers.get("X-Request-Id", None)}')
+    print(f'{resp.text}')
 
     if resp.status_code >= 400:
         print(f'Error code: {resp.status_code}')
